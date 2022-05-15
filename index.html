@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css">
+    
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    
+    <title>TO-Do list 📝</title>
+    <py-register-widget src="./pylist.py" name="py-contactlist" klass="PyList"></py-register-widget>
+
+</head>
+<body style="margin: 5% 10%">
+    <h2 style="font-size: 2em;">TO-Do list with PyScript 📝</h2>
+    <p>You can use <code> ENTER ↩ </code> to insert a TO-Do Task.</p>
+    <p>Enter <code style="background: #eee; padding: 0.5%">Work Name, Work Details</code> to insert a TO-Do Task.</p>
+    <div style="width: 80%">
+        <py-contactlist id="todoBook"></py-contactlist>
+        <py-inputbox id="new_entry">
+            def on_keypress(e):
+                if(e.code == "Enter"):
+                    add_contact()
+        </py-inputbox>
+
+        <br/>
+        <br/>
+        <py-button id="new-todo-btn" label="Add List">
+            def on_click(evt):
+            add_contact()
+        </py-button>
+    </div>
+
+
+<py-script>
+from datetime import datetime as dt
+
+def extract(new_entry):
+    return [x.strip() for x in new_entry.split(',')]
+def add_contact():
+    name, work = extract(new_entry.value)
+    guest = {"name": name, "work": work, "deleted": False, "created_at": dt.now()}
+    todoBook.add(guest)
+    new_entry.clear()
+</py-script>
+</body>
+</html>
