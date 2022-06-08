@@ -12,7 +12,7 @@ PyScript Based Simple To Do App
 
 
 ## 🔗 Youtube Video Links
-[![Video](#)](#)
+[![Video](Build a PyScript To-Do webapp)](https://youtu.be/YBnhNdVMpTY)
 
 ## PyListTemplate and PyItemTemplate
 
